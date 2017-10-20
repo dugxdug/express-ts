@@ -1,9 +1,7 @@
-// Import everything from express and assign it to the express variable
+/* server.js */
 import * as express from 'express';
-import * as Sequelize from 'sequelize';
-
-// Import WelcomeController from controllers entry point
-import { WelcomeController } from './controllers';
+import { WelcomeController } from './controllers/welcomeController';
+import { UserController } from './controllers/userController';
 
 // Create a new express application instance
 const app: express.Application = express();
@@ -12,6 +10,8 @@ const port: number = process.env.PORT || 3000;
 
 // Mount the WelcomeController at the /welcome route
 app.use('/welcome', WelcomeController);
+
+app.use('/user', UserController);
 
 // Serve the application at the given port
 app.listen(port, () => {
